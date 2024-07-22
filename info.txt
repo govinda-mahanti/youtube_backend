@@ -1,9 +1,31 @@
-
 packages:-
-nodemon
-prettier
-mongoose
-express
-dotenv
 
-database always in an other continante
+nodemon - Development mein server ko automatically restart karta hai
+prettier - Code ko format karne ke liye use hota hai
+mongoose - MongoDB ke saath interact karne ke liye ODM library hai.
+express - Web applications aur APIs banane ke liye fast and minimal framework hai.
+dotenv - Environment variables ko manage karne ke liye use hota hai.
+cookie-parser - Cookies ko parse karne aur manage karne ke liye middleware hai.
+cors - Cross-Origin Resource Sharing ko enable karne ke liye middleware hai.
+mongoose-aggregate-paginate-v2 - Mongoose aggregates ko paginate karne ke liye plugin hai.
+bcryptjs - Passwords ko hash karne aur secure karne ke liye library hai.
+jwt - JSON Web Tokens ko generate aur verify karne ke liye use hota hai.
+        A token is like a special key that allows you to access certain features or resources.
+
+***
+https://app.eraser.io/workspace/YtPqZ1VogxGy1jzIDkzj
+
+
+****
+database always in an other continante(async-await)
+when we try to access the data base there some errors accors(try-catch)
+
+Middleware= functions that execute during the lifecycle of a request to a server
+(err, req, res, next)
+
+utility=performing common tasks efficiently and many time||simplifying complex or repetitive ||(wrapper)
+
+cookie= a cookie is a small piece of data stored on the client-side (in the web browser) that is sent to and from the server with each HTTP request and response
+parser refers to the process of reading and interpreting data or text
+
+token= A token is like a special key that allows you to access certain features or resources.

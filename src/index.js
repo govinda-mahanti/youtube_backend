@@ -1,13 +1,30 @@
-// require('dotenv').config({path: './env'})
 import dotenv from "dotenv";
 import connectDB from "./db/index.js"
 
+// Loading environment variables
 dotenv.config({
     path: './env'
 })
 
-
+// Connecting to the database
 connectDB()
+.then(()=>{
+    // If the connection is successful, connect to the MongoDB database using mongoose
+    mongoose.connect(`${process.env.MONGODB_URI}/${DB_NAME}`)
+    
+    app.on("errror",(error)=>{
+        console.log("ERROR: ",errror);
+        throw error
+    })
+
+    // Starting the server and listening on the specified port
+    app.listen(process.env.PORT || 8000, ()=>{
+        console.log(`server is running in port ${process.env.PORT}`) 
+    })
+})
+.catch((err)=>{
+    console.log("ERROR: ",err)
+})
 
 
 
@@ -22,8 +39,7 @@ connectDB()
 
 
 
-
-
+//----------------------------------------------------------OR------------------------------------------------------------
 
 /*
 import mongoose from "mongoose";
@@ -32,8 +48,10 @@ import express from "express";
 const app = express()
 
 ;(async ()=>{
+    //iffi function 
     try {
         mongoose.connect(`${process.env.MONGODB_URI}/${DB_NAME}`)
+        
         app.on("errror",(error)=>{
             console.log("ERROR: ",errror);
             throw error
@@ -46,4 +64,4 @@ const app = express()
         console.error("ERROR: ",error)
     }
 })()
-    */
+*/
