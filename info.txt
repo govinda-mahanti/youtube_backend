@@ -11,6 +11,8 @@ mongoose-aggregate-paginate-v2 - Mongoose aggregates ko paginate karne ke liye p
 bcryptjs - Passwords ko hash karne aur secure karne ke liye library hai.
 jwt - JSON Web Tokens ko generate aur verify karne ke liye use hota hai.
         A token is like a special key that allows you to access certain features or resources.
+        npm i cloudinary
+        multer
 
 ***
 https://app.eraser.io/workspace/YtPqZ1VogxGy1jzIDkzj
