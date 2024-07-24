@@ -3,7 +3,6 @@ import { ApiError } from "../utils/ApiError.js";
 import { User } from "../models/user.model.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import { ApiResponce } from "../utils/ApiResponce.js";
-
 const registerUser = asyncHandler(async (req, res) => {
   // get user deails from frontend
   // validation - no empty
@@ -30,7 +29,7 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 
   // check if user already exist - username
-  existedUser = User.findOne({
+  const existedUser = await User.findOne({
     $or: [{ username }, { email }],
   });
   if (existedUser) {
@@ -39,7 +38,11 @@ const registerUser = asyncHandler(async (req, res) => {
 
   // check for image and avtar
   const avtarLocalPath = req.files?.avtar[0]?.path;
-  const coverImageLocalPath = req.files?.coverImage[0]?.path;
+  // const coverImageLocalPath = req.files?.coverImage[0]?.path;
+  let coverImageLocalPath;
+  if(req.files && Array.isArray(req.files.coverImage)&& req.files.coverImage.length >0){
+    coverImageLocalPath = req.files.coverImage[0].path;
+  }
   if (!avtarLocalPath) {
     throw new ApiError(400, "Avtar file is required");
   }
@@ -62,7 +65,9 @@ const registerUser = asyncHandler(async (req, res) => {
   });
 
   // remove password and refrash token field
-  createdUser = User.findById(user._id).select("-password -refreshToken");
+  const createdUser = await User.findById(user._id).select(
+    "-password -refreshToken"
+)
 
   // check for user creation
   if (!createdUser) {
@@ -70,9 +75,9 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 
   //return responce
-  return res
-    .status(201)
-    .json(new ApiResponce(201, createdUser, "user registerd succesfuly"));
+  return res.status(201).json(
+    new ApiResponce(200, createdUser, "User registered Successfully")
+)
 });
 
 export { registerUser };
