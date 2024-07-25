@@ -31,3 +31,6 @@ cookie= a cookie is a small piece of data stored on the client-side (in the web 
 parser refers to the process of reading and interpreting data or text
 
 token= A token is like a special key that allows you to access certain features or resources.
+
+
+Aggregation pipelining

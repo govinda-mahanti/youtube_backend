@@ -12,7 +12,7 @@ connectDB()
 .then(()=>{
     // If the connection is successful, connect to the MongoDB database using mongoose    
     app.on("errror",(error)=>{
-        console.log("ERROR: ",errror);
+        console.log("ERROR: ",error);
         throw error
     })
 
